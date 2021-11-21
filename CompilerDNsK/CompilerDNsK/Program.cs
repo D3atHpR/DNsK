@@ -67,5 +67,6 @@ class lexer
             var length = _position - start;
             var text = _text.Substring(start, length);
             return new SyntaxToken(SyntaxKind.NumberToken, start, text);
+
         }
     }

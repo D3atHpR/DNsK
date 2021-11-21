@@ -17,20 +17,23 @@
 
 enum SyntaxKind
 {
-    NumberToken
+    NumberToken,
+    WhitespaceToken
 }
 
 class SyntaxToken
 {
-    public SyntaxToken(SyntaxKind kind, int position, string text)
+    public SyntaxToken(SyntaxKind kind, int position, string text, object value)
     {
         Kind = kind;
         Position = position;
         Text = text;
+        Value = value;
     }
     public SyntaxKind Kind { get; }
     public int Position { get; }
     public string Text { get; }
+    public object Value { get; }
 }
 
 class lexer
@@ -66,7 +69,20 @@ class lexer
                 Next();
             var length = _position - start;
             var text = _text.Substring(start, length);
-            return new SyntaxToken(SyntaxKind.NumberToken, start, text);
+            int.TryParse(text, out var value);
+            return new SyntaxToken(SyntaxKind.NumberToken, start, text, value);
 
         }
+        if (char.IsWhiteSpace(Current))
+        {
+            var start = _position;
+            while (char.IsWhiteSpace(Current))
+                Next();
+            var length = _position - start;
+            var text = _text.Substring(start, length);
+            int.TryParse(text, out var value);
+            return new SyntaxToken(SyntaxKind.WhitespaceToken, start, text, value);
+        }
+
     }
+}

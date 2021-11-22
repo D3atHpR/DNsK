@@ -1,0 +1,15 @@
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\bin\Debug\net6.0\CompilerDNsK.exe
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\bin\Debug\net6.0\CompilerDNsK.deps.json
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\bin\Debug\net6.0\CompilerDNsK.runtimeconfig.json
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\bin\Debug\net6.0\CompilerDNsK.dll
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\bin\Debug\net6.0\ref\CompilerDNsK.dll
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\bin\Debug\net6.0\CompilerDNsK.pdb
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\obj\Debug\net6.0\CompilerDNsK.csproj.AssemblyReference.cache
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\obj\Debug\net6.0\CompilerDNsK.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\obj\Debug\net6.0\CompilerDNsK.AssemblyInfoInputs.cache
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\obj\Debug\net6.0\CompilerDNsK.AssemblyInfo.cs
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\obj\Debug\net6.0\CompilerDNsK.csproj.CoreCompileInputs.cache
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\obj\Debug\net6.0\CompilerDNsK.dll
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\obj\Debug\net6.0\ref\CompilerDNsK.dll
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\obj\Debug\net6.0\CompilerDNsK.pdb
+C:\Users\DexSh\source\C#\CompilerDNsK\CompilerDNsK\obj\Debug\net6.0\CompilerDNsK.genruntimeconfig.cache

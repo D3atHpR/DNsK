@@ -15,14 +15,21 @@ while (true)
     while (true)
     {
         var token = lexer.NextToken();
+        if (token.Kind == SyntaxKind.EndOffileToken)
+            break;
+        Console.Write($"{token.Kind}: '{token.Text}'");
+        if(token.Value != null)
+            Console.Write($" {token.Value}");
+        Console.WriteLine();
     }
 
-    if (line == "1 + 2 * 3")
+    /*if (line == "1 + 2 * 3")
     {
         Console.WriteLine("?");
     }
     else
         Console.WriteLine("ERROR: Invalid expression!");
+    */
 }
 
 
@@ -36,7 +43,8 @@ enum SyntaxKind
     SlashToken,
     OpenParenthesisToken,
     CloseParenthesisToken,
-    BadToken
+    BadToken,
+    EndOffileToken
 }
 
 class SyntaxToken
@@ -80,6 +88,12 @@ class Lexer
 
     public SyntaxToken NextToken()
     {
+        if (_position >= _text.Length)
+            return new SyntaxToken(SyntaxKind.EndOffileToken, _position, "\0", null);
+
+
+
+
         if (char.IsDigit(Current))
         {
             var start = _position;
@@ -98,8 +112,8 @@ class Lexer
                 Next();
             var length = _position - start;
             var text = _text.Substring(start, length);
-            int.TryParse(text, out var value);
-            return new SyntaxToken(SyntaxKind.WhitespaceToken, start, text, value);
+            //int.TryParse(text, out var value);
+            return new SyntaxToken(SyntaxKind.WhitespaceToken, start, text, null);
         }
         if (Current == '+')
 #pragma warning disable CS8625
@@ -121,4 +135,37 @@ class Lexer
 
 
     }
+}
+
+class Parser
+{
+    private readonly SyntaxToken[] _tokens;
+    private int _position;
+
+    public Parser( string text)
+    {
+        var tokens = new List<SyntaxToken>();
+
+        var lexer = new Lexer(text);
+        SyntaxToken token;
+        do
+        {
+            token = lexer.NextToken();
+            if (token.Kind != SyntaxKind.WhitespaceToken && token.Kind != SyntaxKind.BadToken)
+                tokens.Add(token);
+            
+
+        } while (token.Kind != SyntaxKind.EndOffileToken);
+        _tokens = tokens.ToArray();
+    }
+    private SyntaxToken Peek(int offset)
+    {
+        var index = _position + offset;
+        if(index >= _tokens.Length)
+            return _tokens[_tokens.Length - 1];
+        return _tokens[index];
+
+    }
+    private SyntaxToken Current => Peek(0);
+
 }

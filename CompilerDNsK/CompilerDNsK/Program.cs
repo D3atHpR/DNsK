@@ -1,12 +1,23 @@
-﻿while (true)
+﻿using System;
+
+
+while (true)
 {
+
     Console.Write("> ");
 
 
     var line = Console.ReadLine();
     if (string.IsNullOrWhiteSpace(line))
         return;
-    if (line == "1+2*3")
+
+    var lexer = new Lexer(line);
+    while (true)
+    {
+        var token = lexer.NextToken();
+    }
+
+    if (line == "1 + 2 * 3")
     {
         Console.WriteLine("?");
     }
@@ -18,7 +29,14 @@
 enum SyntaxKind
 {
     NumberToken,
-    WhitespaceToken
+    WhitespaceToken,
+    PlusToken,
+    MinusToken,
+    StarToken,
+    SlashToken,
+    OpenParenthesisToken,
+    CloseParenthesisToken,
+    BadToken
 }
 
 class SyntaxToken
@@ -36,11 +54,11 @@ class SyntaxToken
     public object Value { get; }
 }
 
-class lexer
+class Lexer
 {
     private readonly string _text;
     private int _position;
-    public lexer(string text)
+    public Lexer(string text)
     {
         _text = text;
     }
@@ -83,6 +101,24 @@ class lexer
             int.TryParse(text, out var value);
             return new SyntaxToken(SyntaxKind.WhitespaceToken, start, text, value);
         }
+        if (Current == '+')
+#pragma warning disable CS8625
+            return new SyntaxToken(SyntaxKind.PlusToken, _position++, "+", null);
+        else if (Current == '-')
+                return new SyntaxToken(SyntaxKind.MinusToken, _position++, "-", null);
+        else if (Current == '*')
+            return new SyntaxToken(SyntaxKind.StarToken, _position++, "*", null);
+        else if (Current == '/')
+            return new SyntaxToken(SyntaxKind.SlashToken, _position++, "/", null);
+        else if (Current == '(')
+            return new SyntaxToken(SyntaxKind.OpenParenthesisToken, _position++, "(", null);
+        else if (Current == ')')
+            return new SyntaxToken(SyntaxKind.CloseParenthesisToken, _position++, ")", null);
+
+
+        return new SyntaxToken(SyntaxKind.BadToken, _position++, _text.Substring(_position - 1, 1), null);
+
+
 
     }
 }

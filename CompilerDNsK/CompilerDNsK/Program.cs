@@ -91,9 +91,6 @@ class Lexer
         if (_position >= _text.Length)
             return new SyntaxToken(SyntaxKind.EndOffileToken, _position, "\0", null);
 
-
-
-
         if (char.IsDigit(Current))
         {
             var start = _position;
@@ -131,8 +128,6 @@ class Lexer
 
 
         return new SyntaxToken(SyntaxKind.BadToken, _position++, _text.Substring(_position - 1, 1), null);
-
-
 
     }
 }

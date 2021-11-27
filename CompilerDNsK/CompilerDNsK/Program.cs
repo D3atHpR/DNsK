@@ -44,7 +44,9 @@ enum SyntaxKind
     OpenParenthesisToken,
     CloseParenthesisToken,
     BadToken,
-    EndOffileToken
+    EndOffileToken,
+    NumberExpression,
+    BinaryExpression
 }
 
 class SyntaxToken
@@ -131,6 +133,42 @@ class Lexer
 
     }
 }
+
+abstract class SyntaxNode 
+{
+    public abstract SyntaxKind Kind { get; }
+}
+
+ abstract class ExpressionSyntax : SyntaxNode
+ {
+ }
+sealed class NumberExpressionSyntax : ExpressionSyntax
+{
+    public NumberExpressionSyntax(SyntaxToken numberToken)
+    {
+        NumberToken = numberToken;
+    }
+
+    public override SyntaxKind Kind => SyntaxKind.NumberExpression;
+    public SyntaxToken NumberToken { get; }
+}
+
+sealed class BinaryExpressionSyntax: ExpressionSyntax
+{
+    public BinaryExpressionSyntax(ExpressionSyntax left, SyntaxNode operatorToken, ExpressionSyntax right )
+    {
+        Left = left;
+        OperatorToken = operatorToken;
+        Right = right;
+    }
+
+    public override SyntaxKind Kind => SyntaxKind.BinaryExpression;
+
+    public ExpressionSyntax Left { get; }
+    public SyntaxNode OperatorToken { get; }
+    public ExpressionSyntax Right { get; }
+}
+
 
 class Parser
 {

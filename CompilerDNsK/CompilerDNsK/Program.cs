@@ -11,6 +11,11 @@ while (true)
     if (string.IsNullOrWhiteSpace(line))
         return;
 
+
+
+
+
+
     var lexer = new Lexer(line);
     while (true)
     {
@@ -30,6 +35,24 @@ while (true)
     else
         Console.WriteLine("ERROR: Invalid expression!");
     */
+}
+
+static void PrettyPrint(SyntaxNode node, string indent ="")
+{
+    Console.Write(node.Kind);
+
+    if (node is SyntaxToken t && t.Value != null)
+    {
+        Console.Write(" ");
+        Console.Write(t.Value);
+    }
+
+    indent += "   ";
+
+    foreach (var child in node.GetChildren())
+    {
+        PrettyPrint(child, indent)
+    }
 }
 
 

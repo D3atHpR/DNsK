@@ -12,9 +12,16 @@ while (true)
         return;
 
 
+    var parser = new Parser(line);
+    var expression = parser.Parse();
 
 
+    var color = Console.ForegroundColor;
+    Console.ForegroundColor = ConsoleColor.DarkGray;
 
+    PrettyPrint(expression);
+    
+    Console.ForegroundColor = color;
 
     var lexer = new Lexer(line);
     while (true)
@@ -51,7 +58,7 @@ static void PrettyPrint(SyntaxNode node, string indent ="")
 
     foreach (var child in node.GetChildren())
     {
-        PrettyPrint(child, indent)
+        PrettyPrint(child, indent);
     }
 }
 

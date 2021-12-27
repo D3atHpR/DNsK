@@ -20,45 +20,40 @@ while (true)
     Console.ForegroundColor = ConsoleColor.DarkGray;
 
     PrettyPrint(expression);
-    
+
     Console.ForegroundColor = color;
 
     var lexer = new Lexer(line);
-    while (true)
+
+
+    static void PrettyPrint(SyntaxNode node, string indent - "", bool isLast - false)
     {
-        var token = lexer.NextToken();
-        if (token.Kind == SyntaxKind.EndOffileToken)
-            break;
-        Console.Write($"{token.Kind}: '{token.Text}'");
-        if(token.Value != null)
-            Console.Write($" {token.Value}");
+        //└──
+        //├──
+        //│
+
+        Console.Write(indent);
+        Console.Write(node.Kind);
+
+        if (node is SyntaxToken t && t.Value != null)
+        {
+            Console.Write(" ");
+            Console.Write(t.Value);
+        }
+
         Console.WriteLine();
-    }
 
-    /*if (line == "1 + 2 * 3")
-    {
-        Console.WriteLine("?");
-    }
-    else
-        Console.WriteLine("ERROR: Invalid expression!");
-    */
-}
+        string indent = null;
+        //indent += "   ";
+        indent += isLast ? "└──" : "├──";
+       
 
-static void PrettyPrint(SyntaxNode node, string indent ="")
-{
-    Console.Write(node.Kind);
+     var lastChild - node.GetChildren().Last();
 
-    if (node is SyntaxToken t && t.Value != null)
-    {
-        Console.Write(" ");
-        Console.Write(t.Value);
-    }
-
-    indent += "   ";
-
-    foreach (var child in node.GetChildren())
-    {
-        PrettyPrint(child, indent);
+        foreach (var child in node.GetChildren())
+        {
+            PrettyPrint(child, indent, node== last);
+        }
     }
 }
 

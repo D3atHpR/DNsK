@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DexSh\\source\\C#\\CompilerDNsK\\CompilerDNsK\\CompilerDNsK.csproj": {}
+    "C:\\C#GIt\\CompilerDNsK\\CompilerDNsK\\CompilerDNsK.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DexSh\\source\\C#\\CompilerDNsK\\CompilerDNsK\\CompilerDNsK.csproj": {
+    "C:\\C#GIt\\CompilerDNsK\\CompilerDNsK\\CompilerDNsK.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DexSh\\source\\C#\\CompilerDNsK\\CompilerDNsK\\CompilerDNsK.csproj",
+        "projectUniqueName": "C:\\C#GIt\\CompilerDNsK\\CompilerDNsK\\CompilerDNsK.csproj",
         "projectName": "CompilerDNsK",
-        "projectPath": "C:\\Users\\DexSh\\source\\C#\\CompilerDNsK\\CompilerDNsK\\CompilerDNsK.csproj",
+        "projectPath": "C:\\C#GIt\\CompilerDNsK\\CompilerDNsK\\CompilerDNsK.csproj",
         "packagesPath": "C:\\Users\\DexSh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DexSh\\source\\C#\\CompilerDNsK\\CompilerDNsK\\obj\\",
+        "outputPath": "C:\\C#GIt\\CompilerDNsK\\CompilerDNsK\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DexSh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
